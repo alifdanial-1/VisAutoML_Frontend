@@ -7,16 +7,16 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN npm run build
+# RUN npm run build
 
-# Step 2: Serve build folder using Nginx
-FROM nginx:alpine
+# # Step 2: Serve build folder using Nginx
+# FROM nginx:alpine
 
-# Copy build output to Nginx public directory
-COPY --from=build /app/build /usr/share/nginx/html
+# # Copy build output to Nginx public directory
+# COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 80 to the internet
-EXPOSE 80
+EXPOSE 3000
 
 # Start Nginx server
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start", ""]
